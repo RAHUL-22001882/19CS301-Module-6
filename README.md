@@ -1,41 +1,39 @@
 # 19CS301-Module-6
-EX: 6.1   POLYMORPHISM
+EX: 6a   POLYMORPHISM
 
-### AIM: To Create two specific classes- Beans and Mango. Along with that, create a generic function that tells us the type and color of the object we pass. Mind you, since we have passed only “obj” through it, this obj can be any object.
+### AIM: 
+To Create two classes Employee and Admin. These two different classes have the same method name info(). This method contains information(name, department) about employee in Employee class and admin in Admin class.after initializing classes, Create two objects for respective classes. Then the method info() is called. Once by the object of Employee class and once by the object of Admin class.
 
 
 ### ALGORITHM:
 Step1: create class Beans and def a function type and color
 
-Step 2: create a class Mango and def a function type and color
+Step 2: create a class employee and admin
 
-Step3: def a function func
+Step3: def a function info
 
 Step 4: call the objects and execute the program
 
 ### PROGRAM:
 ```
-class Beans ():
-    def type(self):   
-          print("Vegetable")
-    def color(self):
-          print("Green")
-class Mango:
-   def type(self):
-          print("Fruit")
-   def color(self):
-         print("Yellow")
-   def func(obj):
-         obj.type()
-         obj.color()
-         obj_beans = Beans()
-         obj_mango = Mango()
-         func(obj_beans)
-         func(obj_mango)
+class Employee:
+    def info(self):
+        #Add your code Here
+        print('Rooney from Electronics')
+
+class Admin:
+    def info(self):
+        #Add your code here
+        print('Kalesh from CS')
+        
+        
+obj_emp = Employee()
+obj_adm = Admin()
+for x in (obj_emp,obj_adm):
+    x.info()
 ```
 ### OUTPUT:
-![image](https://github.com/user-attachments/assets/b41a3e12-896b-4f6c-a9b2-19045a5088f9)
-
+![Screenshot 2025-06-02 120547](https://github.com/user-attachments/assets/e5374b27-4aa7-41ff-9878-b282d459f0a3)
 
 ### RESULT: Thus, the program has been successfully executed.
 
@@ -62,12 +60,13 @@ ob1 = A(2)
 ob2 = A(3)
 print(ob1<ob2)
 ```
-###OUTPUT:
-![image](https://github.com/user-attachments/assets/dae03d17-1004-424e-a179-ef62fd2681bd)
+
+### OUTPUT:
+![Screenshot 2025-06-02 121831](https://github.com/user-attachments/assets/706cf43f-0e63-4cac-8088-ca99a3a866a3)
 
 
+### RESULT: Thus, the program has been successfully executed.
 
-###RESULT: Thus, the program has been successfully executed.
 EX: 6.3 ABSTRACT CLASS METHOD
 
 ### AIM: To Create the abstract method calculate_area which is of the abstract class 'Shape'
@@ -80,53 +79,144 @@ Step2:put class function to define the function using self
 Step3:By using the function to find the area of the rectangle and circle Step4:Execute the program.
 
 ### PROGRAM:
-```from abc import ABC
-class Shape(ABC):
-            def calculate_area(self):
-                Pass
-class Rectangle(Shape):
-               length = 5
-               breadth =3
-               def calculate_area(self):
-                   print("Area of a rectangle:",self.length * self.breadth)
-class Circle(Shape):
-             radius = 4
-             def calculate_area(self):
-                     print("Area of a circle:",3.14 * self.radius * self.radius)
-a=Rectangle()
-b=Circle()
-a.calculate_area()
-b.calculate_area()
 ```
+from abc import ABC
+class Shape(ABC): 
+    def calculate_area(self):
+        pass
+
+class Rectangle(Shape):
+  length = 6
+  breadth = 4
+  def calculate_area(self):
+    return self.length * self.breadth
+
+class Circle(Shape):
+  radius = 7
+  def calculate_area(self):
+      return 3.14 * self.radius * self.radius
+
+class Square(Shape):
+  length = 4
+  def calculate_area(self):
+        return self.length * self.length
+class triangle(Shape):
+  length = 5
+  width = 4
+  def calculate_area(self):
+      return 1/2 * self.length * self.width
+r = Rectangle() 
+c = Circle()
+s = Square() 
+t = triangle() 
+print("Area of a rectangle:", r.calculate_area()) 
+print("Area of a circle:", c.calculate_area()) 
+print("Area of a square:", s.calculate_area())
+print("Area of a triangle:", t.calculate_area())
+```
+
 ### OUTPUT:
-![image](https://github.com/user-attachments/assets/a4c70e22-b3e0-417a-86d7-41f547c9d60d)
+![Screenshot 2025-06-02 120659](https://github.com/user-attachments/assets/660f05b5-59ed-4134-95e9-7fc5455862b7)
+
 
 
 ### RESULT: Thus, the program has been successfully executed.
 
-EXP.No: 6.4     ENCAPSULATION
-### AIM: To Implement Encapsulation using private members –of a class rectangle with private variables length,width.
-###ALGORITHM: Step1: put class function to define the function using self Step2: By using the function to find the area of the rectangle Step3: Execute the program.
-###PROGRAM:
+EXP.No: 6d     ENCAPSULATION
+### AIM: 
+To Implement Encapsulation using private members Use Name Mangling obj._ABC__fun() and obj._ABC__a concepts to access the private variables in ABC class.
+### ALGORITHM: 
+Start the program.
+
+1.Define a class ABC.
+
+2.In the init() constructor:
+
+3.Declare a private instance variable __a and assign it the value 5.
+
+4.Define a public method fun() that prints "I am public class method".
+
+5.Define another method fun1():
+
+6.Print "I am private class method".
+
+7.Access and print the private variable __a.
+
+8.Create an object x of class ABC.
+
+9.Call the method x.fun() to execute the public method.
+
+10.Call the method x.fun1() to execute the method that accesses the private variable.
+
+End the program
+### PROGRAM:
 ```
-class Rectangle:
- 	length = 0
- 	breadth = 0
-  def	init	(self):
-       self.	length = 5
-       self.	breadth = 3
-  print(self.	length)
-  print(self.	breadth)
-rect = Rectangle()
+class ABC:
+   def __init__(self):
+       self.__a=5
+   def fun(self):
+       print("I am public class method")
+   def fun1(self):
+       print("I am private class method")
+       print(self.__a)
+x=ABC()
+x.fun()
+x.fun1()
 ```
 ### OUTPUT:
  
-![image](https://github.com/user-attachments/assets/ea434dc1-3f93-4a66-8828-1d815e9ff015)
+![Screenshot 2025-06-02 121201](https://github.com/user-attachments/assets/7a9c39a9-a03d-4067-ac6f-798406d66ddc)
 
- 
 
 ### RESULT: Thus, the program has been successfully executed
 
+EXP.No: 6e ENCAPSULATION-PUBLIC MEMBERS
+
+### AIM:
+Create a class Employee with public method show to display the details of the employee.
+
+### ALGORITHM:
+Start
+
+Initialize the Employee Object:
+
+m = Employee() creates an instance of the Employee class.
+
+The constructor sets __price to 10000.
+
+Display Salary (Initial Value):
+
+Call m.sell() which prints Name: Jessa Salary: 10000.
+
+Update Salary:
+
+Call m.set(10000) to set the salary to 10000.
+
+Display Salary (Updated Value):
+
+Call m.sell() again, which prints the updated salary, which is still 10000.
+
+End
+
+### PROGRAM:
+```
+class Employee:
+    def __init__(self):
+        self.__price=10000
+    def sell(self):
+        print(f"Name:  Jessa Salary: {self.__price}")
+    def set(self,x):
+        self.__price=x
+m=Employee()
+m.sell()
+m.set(10000)
+m.sell()
+```
+### OUTPUT : 
+![Screenshot 2025-06-02 122237](https://github.com/user-attachments/assets/4864fea3-5869-468d-9051-7e3cb4bbd89e)
+
+### RESULT: 
+Thus, the program has been successfully executed.
 
 
 
